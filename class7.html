@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script>
+            function add(x,y) {
+                const ans = x + y
+                return ans
+            }
+            function sub(x,y) {
+                const ans = x - y
+                return ans
+            }
+            function mul(x,y) {
+                const ans = x * y
+                return ans
+            }
+            function div(x,y) {
+                const ans = x / y
+                return ans
+            }
+            //(3*4 + 15 - 2) / 5
+            ans = (div(add(mul(3,4),sub(15,2)),5))
+            alert('answer is '+ans)
+            mymul = mul(3,4)
+            mysub = sub(15,2)
+            myadd = add(mymul,mysub)
+            mydiv = div(myadd,5)
+            alert('second answer was '+mydiv)
+
+            
+        </script>
+    </head>
+</html>

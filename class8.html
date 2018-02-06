@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <script>
+        let par1
+        let par2
+        let op
+        function random(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        function loadExersize() {
+            const targil = document.getElementById('targil');
+            const level = document.getElementById('level').value;
+            par1 = random(0, 10)*10**(level-1);
+            par2 = random(0, 10)*10**(level-1);
+            op = document.getElementById('param').value;
+            targil.innerHTML = par1 + op + par2 + '=';
+        }
+
+        let gidx = 0;
+        let bidx = 0;
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value;
+
+            switch (op) {
+                case '+':
+                    if (parseInt(answer) == par1 + par2) {
+                        document.getElementById('wascorrect').innerHTML = 'good answer';
+                        gidx = gidx + 1;
+                        document.getElementById('gidx').innerHTML = gidx;
+                    } else {
+                        document.getElementById('wascorrect').innerHTML = 'wrong answer';
+                        bidx = bidx + 1;
+                        document.getElementById('bidx').innerHTML = bidx;
+                    }
+                    break;
+                case '-':
+                    if (parseInt(answer) == par1 - par2) {
+                        document.getElementById('wascorrect').innerHTML = 'good answer';
+                        gidx = gidx + 1;
+                        document.getElementById('gidx').innerHTML = gidx;
+                    } else {
+                        document.getElementById('wascorrect').innerHTML = 'wrong answer';
+                        bidx = bidx + 1;
+                        document.getElementById('bidx').innerHTML = bidx;
+                    }
+                    break;
+                case '*':
+                    if (parseInt(answer) == par1 * par2) {
+                        document.getElementById('wascorrect').innerHTML = 'good answer';
+                        gidx = gidx + 1;
+                        document.getElementById('gidx').innerHTML = gidx;
+                    } else {
+                        document.getElementById('wascorrect').innerHTML = 'wrong answer';
+                        bidx  = bidx + 1;
+                        document.getElementById('bidx').innerHTML = bidx;
+                    }
+                    break;
+                case '/':
+                    if (parseInt(answer) == par1 / par2) {
+                        document.getElementById('wascorrect').innerHTML = 'good answer';
+                        gidx = gidx + 1;
+                        document.getElementById('gidx').innerHTML = gidx;
+                    } else {
+                        document.getElementById('wascorrect').innerHTML = 'wrong answer';
+                        bidx = bidx + 1;
+                        document.getElementById('bidx').innerHTML = bidx;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <span>Level</span>
+        <select id="level">
+            <option value = '1'>1</option>
+            <option value = '2'>2</option>
+            <option value = '3'>3</option>
+            <option value = '4'>4</option>
+        </select>
+    </div>
+    <div>
+        <label>Param</label>
+        <select id="param">
+            <option value = '+'>Add</option>
+            <option value = '-'>Sub</option>
+            <option value = '*'>Mult</option>
+            <option value = '/'>Div</option>
+        </select>
+    </div>
+    <br>
+    <button onclick="loadExersize()">start</button>
+    <div>
+        <span id='targil'></span>
+        <input id='answer' type='number'>
+    </div>
+    <div>
+    <button onclick="checkAnswer()">ok</button>
+    <button onclick="loadExersize()">next</button>
+    </div>
+    <div id='wascorrect'>
+    </div>
+    <div>
+        <label>good counter- </label><span id = 'gidx'></span>
+        <br/>
+        <label>bad counter- </label><span id = 'bidx'></span>
+    </div>
+</body>
+
+</html>
